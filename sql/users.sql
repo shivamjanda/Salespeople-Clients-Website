@@ -1,0 +1,25 @@
+-- SHIVAM JANDA
+-- 2022-12-07
+-- WEBD 3201
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+DROP SEQUENCE IF EXISTS user_id_seq;
+CREATE SEQUENCE users_id_seq START 1000;
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+	Id INT PRIMARY KEY DEFAULT nextval('users_id_seq'),
+	EmailAddress VARCHAR(255) UNIQUE,
+	Password VARCHAR(255) NOT NULL,
+	FirstName VARCHAR(128),
+	LastName VARCHAR(128),
+	LastAccess TIMESTAMP,
+	EnrolDate TIMESTAMP,
+	Enable BOOLEAN,
+	Type VARCHAR(2)
+	
+);
+
+
+SELECT * FROM users;
